@@ -1,0 +1,24 @@
+#version 330 core
+
+// input vertex and UV coordinates, different for all executions of this shader
+layout(location = 0) in vec3 vertexPosition_modelspace;
+layout(location = 1) in vec3 vertexNormal_modelspace;
+layout(location = 2) in vec2 vertexUV;
+
+// Output data ; will be interpolated for each fragment.
+out vec3 vertex_position_modelspace;
+out vec3 vertex_normal_modelspace;
+out vec2 vertex_UV;
+
+// model view projection matrix 
+uniform mat4 MVP;
+
+void main()
+{
+    // assign vertex position
+    gl_Position = MVP * vec4(vertexPosition_modelspace, 1.0);
+
+    vertex_position_modelspace = vertexPosition_modelspace;
+    vertex_normal_modelspace = vertexNormal_modelspace; 
+    vertex_UV = vertexUV;
+}

@@ -1,0 +1,38 @@
+PLEASE NOTE:
+Almost all of the following controls either exist in the GUI as well
+or are made redundant by it. As such, most of the following need not
+be memorized. The GUI also features exended options which are not
+mapped to physical keys. You should use the GUI whenever possible.
+
+       --- GAME CONTROLS ---
+MOUSE MOVEMENT        Change selected square
+LEFT CLICK/SPACE      Confirm selection
+RIGHT CLICK           Pan camera
+Ctrl + N              Start new game
+F1..4                 Quick-save to slot 1-4
+Ctrl + F1..4          Quick-load from slot 1-4
+
+       --- LIGHT CONTROLS ---
+I                    Move light -z
+K                    Move light +z
+J                    Move light -x
+L                    Move light +x
+U                    Move light +y
+O                    Move light -y
+F5                   Show/Hide sphere on light position
+PLUS                 Add one more light source
+MINUS                Remove last added light source
+GRAVE/ACCENT         Change selected light source (for moving)
+
+       --- VISUAL EFFECTS CONTROLS ---
+9                    Enable/Disable water on board
+0                    Enable/Disable transparent pieces
+
+       --- CAMERA  MOVEMENT CONTROLS ---
+HOME                 Unlock/Lock camera movement (LOCKED BY DEFAULT)
+W                    Move camera front
+S                    Move camera back
+A                    Move camera left
+D                    Move camera right
+Q                    Move camera up (+y)
+E                    Move camera down (-y)

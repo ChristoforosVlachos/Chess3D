@@ -1,0 +1,74 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+in vec3 vertex_position_modelspace;
+in vec3 vertex_normal_modelspace;
+in vec2 vertex_UV;
+
+// output data
+out vec4 fragment_color;
+
+// Values that stay constant for the whole mesh.
+uniform int mode;
+
+void main()
+{	
+	switch(mode) {
+		case -1: // (moving selector)
+			if (vertex_position_modelspace.x > 0.1 && vertex_position_modelspace.x < 0.9 &&
+				vertex_position_modelspace.z < -0.1 && vertex_position_modelspace.z > -0.9) 
+			{
+				discard;
+			}
+			else
+			{
+				fragment_color = vec4(1.0f, 1.0f, 0.1f, 1.0f);
+			}
+			break;
+		case 0: // RESET
+			fragment_color = vec4(0.1f, 1.0f, 0.1f, 1.0f);
+			break;
+		case 1: // NORMAL
+		case 5: // EN_PASSANT_THREAT
+			if (vertex_position_modelspace.x > 0.2 && vertex_position_modelspace.x < 0.8 &&
+				vertex_position_modelspace.z < -0.2 && vertex_position_modelspace.z > -0.8) 
+			{
+				fragment_color = vec4(1.0f, 1.0f, 0.1f, 1.0f);
+			}
+			else
+			{
+				discard;
+			}
+			break;
+		case 2: // CAPTURE
+		case 6: // EN_PASSANT_CAPTURE
+			fragment_color = vec4(1.0f, 0.1f, 0.1f, 1.0f);
+			break;
+		case 3: // CASTLING_KINGSIDE
+		case 4: // CASTLING_QUEENSIDE
+		case 7: // PROMOTE
+			if (vertex_position_modelspace.x > 0.2 && vertex_position_modelspace.x < 0.8 &&
+				vertex_position_modelspace.z < -0.2 && vertex_position_modelspace.z > -0.8) 
+			{
+				fragment_color = vec4(0.1f, 0.1f, 1.0f, 1.0f);
+			}
+			else
+			{
+				discard;
+			}
+			break;
+		case 8: // CAPTURE_AND_PROMOTE
+			if (vertex_position_modelspace.x > 0.1 && vertex_position_modelspace.x < 0.9 &&
+				vertex_position_modelspace.z < -0.1 && vertex_position_modelspace.z > -0.9) 
+			{
+				fragment_color = vec4(1.0f, 0.1f, 0.1f, 1.0f);
+			}
+			else
+			{
+				fragment_color = vec4(0.1f, 0.1f, 1.0f, 1.0f);
+			}
+			break;
+		default:
+			fragment_color = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	}
+}
